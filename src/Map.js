@@ -93,6 +93,8 @@ type Props = {
     padding?: Point,
     maxZoom?: number,
   },
+  //sami option
+  filterChanged?: number,
   children: Node,
   className?: string,
   id?: string,
@@ -110,6 +112,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     center: latlng,
     children: children,
     className: PropTypes.string,
+    //sami 
+    filterChanged: PropTypes.number,
     id: PropTypes.string,
     maxBounds: bounds,
     maxZoom: PropTypes.number,
@@ -167,6 +171,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       animate,
       bounds,
       boundsOptions,
+      //sami
+      filterChanged,
       center,
       className,
       maxBounds,
@@ -213,7 +219,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     if (
       bounds &&
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
-        boundsOptions !== fromProps.boundsOptions)
+        boundsOptions !== fromProps.boundsOptions || 
+        filterChanged !== fromProps.filterChanged)
     ) {
       if (useFlyTo === true) {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
