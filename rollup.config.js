@@ -35,7 +35,8 @@ if (env === 'production') {
         dead_code: true,
         warnings: false,
       },
-    }),
+    // eslint-disable-next-line prettier/prettier
+    })
   )
 }
 
