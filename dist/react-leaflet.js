@@ -5857,6 +5857,9 @@ var Map$3 = function (_MapComponent) {
       this.leafletElement.setMaxBounds(maxBounds);
     }
 
+    console.log('BABOON!!!');
+    console.log(this.leafletElement);
+
     if (bounds$$1 && (this.shouldUpdateBounds(bounds$$1, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged)) {
       if (useFlyTo === true) {
         this.leafletElement.flyToBounds(bounds$$1, boundsOptions);
@@ -5886,6 +5889,9 @@ var Map$3 = function (_MapComponent) {
     }
 
     console.log(this.leafletElement);
+    console.log(this.leafletElement.invalidateSize);
+    console.log('trying invalidate size now');
+    this.leafletElement.invalidateSize(false);
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created

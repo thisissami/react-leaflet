@@ -218,7 +218,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     console.log('BABOON!!!')
     console.log(this.leafletElement)
-    
+
     if (
       bounds &&
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
@@ -270,6 +270,9 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     }
 
     console.log(this.leafletElement)
+    console.log(this.leafletElement.invalidateSize)
+    console.log('trying invalidate size now')
+    this.leafletElement.invalidateSize(false)
 
     super.componentDidMount()
     this.forceUpdate() // Re-render now that leafletElement is created
