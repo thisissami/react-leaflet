@@ -220,7 +220,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       bounds &&
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
         boundsOptions !== fromProps.boundsOptions || 
-        filterChanged !== fromProps.filterChanged)
+        filterChanged !== fromProps.filterChanged) //sami
     ) {
       if (useFlyTo === true) {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
@@ -264,8 +264,6 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       this.leafletElement.whenReady(this.props.whenReady)
     }
 
-    window.map = this.leafletElement
-
     super.componentDidMount()
     this.forceUpdate() // Re-render now that leafletElement is created
   }
@@ -298,7 +296,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
   render() {
     const map = this.leafletElement
-    console.log('hawow will this show?')
+
+    //sami - used to ensure map fills the height:100% without resizing
     if (map) {
       map.invalidateSize(false)
     }    

@@ -142,13 +142,14 @@ var Map = function (_MapComponent) {
       this.leafletElement.setMaxBounds(maxBounds);
     }
 
-    if (bounds && (this.shouldUpdateBounds(bounds, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged)) {
-      if (useFlyTo === true) {
-        this.leafletElement.flyToBounds(bounds, boundsOptions);
-      } else {
-        this.leafletElement.fitBounds(bounds, boundsOptions);
+    if (bounds && (this.shouldUpdateBounds(bounds, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged) //sami
+    ) {
+        if (useFlyTo === true) {
+          this.leafletElement.flyToBounds(bounds, boundsOptions);
+        } else {
+          this.leafletElement.fitBounds(bounds, boundsOptions);
+        }
       }
-    }
 
     this._updating = false;
   };
@@ -167,8 +168,6 @@ var Map = function (_MapComponent) {
     if (this.props.whenReady) {
       this.leafletElement.whenReady(this.props.whenReady);
     }
-
-    window.map = this.leafletElement;
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
@@ -198,7 +197,8 @@ var Map = function (_MapComponent) {
 
   Map.prototype.render = function render() {
     var map = this.leafletElement;
-    console.log('hawow will this show?');
+
+    //sami - used to ensure map fills the height:100% without resizing
     if (map) {
       map.invalidateSize(false);
     }

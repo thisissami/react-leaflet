@@ -5857,13 +5857,14 @@ var Map$3 = function (_MapComponent) {
       this.leafletElement.setMaxBounds(maxBounds);
     }
 
-    if (bounds$$1 && (this.shouldUpdateBounds(bounds$$1, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged)) {
-      if (useFlyTo === true) {
-        this.leafletElement.flyToBounds(bounds$$1, boundsOptions);
-      } else {
-        this.leafletElement.fitBounds(bounds$$1, boundsOptions);
+    if (bounds$$1 && (this.shouldUpdateBounds(bounds$$1, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged) //sami
+    ) {
+        if (useFlyTo === true) {
+          this.leafletElement.flyToBounds(bounds$$1, boundsOptions);
+        } else {
+          this.leafletElement.fitBounds(bounds$$1, boundsOptions);
+        }
       }
-    }
 
     this._updating = false;
   };
@@ -5882,8 +5883,6 @@ var Map$3 = function (_MapComponent) {
     if (this.props.whenReady) {
       this.leafletElement.whenReady(this.props.whenReady);
     }
-
-    window.map = this.leafletElement;
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
@@ -5913,7 +5912,8 @@ var Map$3 = function (_MapComponent) {
 
   Map$$1.prototype.render = function render$$1() {
     var map$$1 = this.leafletElement;
-    console.log('hawow will this show?');
+
+    //sami - used to ensure map fills the height:100% without resizing
     if (map$$1) {
       map$$1.invalidateSize(false);
     }
