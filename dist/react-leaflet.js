@@ -5857,9 +5857,6 @@ var Map$3 = function (_MapComponent) {
       this.leafletElement.setMaxBounds(maxBounds);
     }
 
-    console.log('BABOON!!!');
-    console.log(this.leafletElement);
-
     if (bounds$$1 && (this.shouldUpdateBounds(bounds$$1, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged)) {
       if (useFlyTo === true) {
         this.leafletElement.flyToBounds(bounds$$1, boundsOptions);
@@ -5872,8 +5869,6 @@ var Map$3 = function (_MapComponent) {
   };
 
   Map$$1.prototype.componentDidMount = function componentDidMount() {
-    console.log('woooooooo!!!');
-
     var props = omit(this.props, OTHER_PROPS);
     this.leafletElement = this.createLeafletElement(props);
 
@@ -5888,11 +5883,7 @@ var Map$3 = function (_MapComponent) {
       this.leafletElement.whenReady(this.props.whenReady);
     }
 
-    console.log(this.leafletElement);
-    console.log(this.leafletElement.invalidateSize);
     window.map = this.leafletElement;
-
-    console.log('set window.map to be this.leafletelement');
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
@@ -5923,7 +5914,10 @@ var Map$3 = function (_MapComponent) {
   Map$$1.prototype.render = function render$$1() {
     var map$$1 = this.leafletElement;
     console.log('hawow will this show?');
-    console.log(map$$1);
+    if (map$$1) {
+      map$$1.invalidateSize(false);
+    }
+
     var children$$1 = map$$1 ? this.props.children : null;
 
     return React__default.createElement(

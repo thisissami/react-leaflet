@@ -216,9 +216,6 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       this.leafletElement.setMaxBounds(maxBounds)
     }
 
-    console.log('BABOON!!!')
-    console.log(this.leafletElement)
-
     if (
       bounds &&
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
@@ -253,8 +250,6 @@ export default class Map extends MapComponent<LeafletElement, Props> {
   }
 
   componentDidMount() {
-    console.log('woooooooo!!!')
-
     const props = omit(this.props, OTHER_PROPS)
     this.leafletElement = this.createLeafletElement(props)
 
@@ -269,11 +264,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       this.leafletElement.whenReady(this.props.whenReady)
     }
 
-    console.log(this.leafletElement)
-    console.log(this.leafletElement.invalidateSize)
     window.map = this.leafletElement
-
-    console.log('set window.map to be this.leafletelement')
 
     super.componentDidMount()
     this.forceUpdate() // Re-render now that leafletElement is created
@@ -308,7 +299,10 @@ export default class Map extends MapComponent<LeafletElement, Props> {
   render() {
     const map = this.leafletElement
     console.log('hawow will this show?')
-    console.log(map)
+    if (map) {
+      map.invalidateSize(false)
+    }    
+
     const children = map ? this.props.children : null
 
     return (
