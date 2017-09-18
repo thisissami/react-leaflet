@@ -271,8 +271,9 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     console.log(this.leafletElement)
     console.log(this.leafletElement.invalidateSize)
-    console.log('trying invalidate size now')
-    this.leafletElement.invalidateSize(false)
+    window.map = this.leafletElement
+
+    console.log('set window.map to be this.leafletelement')
 
     super.componentDidMount()
     this.forceUpdate() // Re-render now that leafletElement is created

@@ -175,8 +175,9 @@ var Map = function (_MapComponent) {
 
     console.log(this.leafletElement);
     console.log(this.leafletElement.invalidateSize);
-    console.log('trying invalidate size now');
-    this.leafletElement.invalidateSize(false);
+    window.map = this.leafletElement;
+
+    console.log('set window.map to be this.leafletelement');
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
