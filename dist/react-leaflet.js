@@ -5869,6 +5869,8 @@ var Map$3 = function (_MapComponent) {
   };
 
   Map$$1.prototype.componentDidMount = function componentDidMount() {
+    console.log('woooooooo!!!');
+
     var props = omit(this.props, OTHER_PROPS);
     this.leafletElement = this.createLeafletElement(props);
 
@@ -5882,6 +5884,8 @@ var Map$3 = function (_MapComponent) {
     if (this.props.whenReady) {
       this.leafletElement.whenReady(this.props.whenReady);
     }
+
+    console.log(this.leafletElement);
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
@@ -5911,6 +5915,8 @@ var Map$3 = function (_MapComponent) {
 
   Map$$1.prototype.render = function render$$1() {
     var map$$1 = this.leafletElement;
+    console.log('hawow will this show?');
+    console.log(map$$1);
     var children$$1 = map$$1 ? this.props.children : null;
 
     return React__default.createElement(

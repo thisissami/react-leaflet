@@ -154,6 +154,8 @@ var Map = function (_MapComponent) {
   };
 
   Map.prototype.componentDidMount = function componentDidMount() {
+    console.log('woooooooo!!!');
+
     var props = _omit(this.props, OTHER_PROPS);
     this.leafletElement = this.createLeafletElement(props);
 
@@ -167,6 +169,8 @@ var Map = function (_MapComponent) {
     if (this.props.whenReady) {
       this.leafletElement.whenReady(this.props.whenReady);
     }
+
+    console.log(this.leafletElement);
 
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
@@ -196,6 +200,8 @@ var Map = function (_MapComponent) {
 
   Map.prototype.render = function render() {
     var map = this.leafletElement;
+    console.log('hawow will this show?');
+    console.log(map);
     var children = map ? this.props.children : null;
 
     return React.createElement(
