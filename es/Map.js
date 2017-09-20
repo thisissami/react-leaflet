@@ -201,6 +201,7 @@ var Map = function (_MapComponent) {
 
     //sami - used to ensure map fills the height:100% without resizing
     if (this.props.mapLoaded) {
+      console.log('invalidating size');
       map.invalidateSize(false);
     }
 
