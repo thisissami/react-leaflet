@@ -305,8 +305,6 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     //sami - used to ensure map fills the height:100% without resizing
     if (this.props.mapLoaded) {
-      console.log('invalidating size')
-      window.map = map
       map.invalidateSize(false)
     }    
 
