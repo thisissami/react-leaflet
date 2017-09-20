@@ -5814,6 +5814,7 @@ var Map$3 = function (_MapComponent) {
         bounds$$1 = toProps.bounds,
         boundsOptions = toProps.boundsOptions,
         filterChanged = toProps.filterChanged,
+        mapLoaded = toProps.mapLoaded,
         center = toProps.center,
         className = toProps.className,
         maxBounds = toProps.maxBounds,
@@ -5857,7 +5858,7 @@ var Map$3 = function (_MapComponent) {
       this.leafletElement.setMaxBounds(maxBounds);
     }
 
-    if (bounds$$1 && (this.shouldUpdateBounds(bounds$$1, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged) //sami
+    if (bounds$$1 && (this.shouldUpdateBounds(bounds$$1, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions || filterChanged !== fromProps.filterChanged) //sami - forces leaflet to reset bounds whenever filter is changed
     ) {
         if (useFlyTo === true) {
           this.leafletElement.flyToBounds(bounds$$1, boundsOptions);
@@ -5914,7 +5915,7 @@ var Map$3 = function (_MapComponent) {
     var map$$1 = this.leafletElement;
 
     //sami - used to ensure map fills the height:100% without resizing
-    if (map$$1) {
+    if (this.props.mapLoaded) {
       map$$1.invalidateSize(false);
     }
 
@@ -5943,6 +5944,8 @@ Map$3.propTypes = {
   className: propTypes.string,
   //sami 
   filterChanged: propTypes.number,
+  //sami
+  mapLoaded: propTypes.bool,
   id: propTypes.string,
   maxBounds: bounds,
   maxZoom: propTypes.number,

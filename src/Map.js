@@ -95,6 +95,8 @@ type Props = {
   },
   //sami option
   filterChanged?: number,
+  //sami option
+  mapLoaded?: boolean,
   children: Node,
   className?: string,
   id?: string,
@@ -114,6 +116,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     className: PropTypes.string,
     //sami 
     filterChanged: PropTypes.number,
+    //sami
+    mapLoaded: PropTypes.bool,
     id: PropTypes.string,
     maxBounds: bounds,
     maxZoom: PropTypes.number,
@@ -173,6 +177,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       boundsOptions,
       //sami
       filterChanged,
+      //sami
+      mapLoaded,
       center,
       className,
       maxBounds,
@@ -220,7 +226,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       bounds &&
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
         boundsOptions !== fromProps.boundsOptions || 
-        filterChanged !== fromProps.filterChanged) //sami
+        filterChanged !== fromProps.filterChanged) //sami - forces leaflet to reset bounds whenever filter is changed
     ) {
       if (useFlyTo === true) {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
@@ -298,7 +304,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     const map = this.leafletElement
 
     //sami - used to ensure map fills the height:100% without resizing
-    if (map) {
+    if (this.props.mapLoaded) {
       map.invalidateSize(false)
     }    
 
