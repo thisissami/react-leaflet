@@ -13,6 +13,7 @@ type LeafletElement = LeafletMarker
 type Props = {
   icon?: Icon,
   draggable?: boolean,
+  isFocused?: boolean, //sami
   opacity?: number,
   position: LatLng,
   zIndexOffset?: number,
@@ -22,6 +23,7 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
   static propTypes = {
     children: children,
     draggable: PropTypes.bool,
+    isFocused: PropTypes.bool, //sami
     icon: PropTypes.instanceOf(Icon),
     opacity: PropTypes.number,
     position: latlng.isRequired,
@@ -60,6 +62,11 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
         this.leafletElement.dragging.enable()
       } else {
         this.leafletElement.dragging.disable()
+      }
+    }
+    if (toProps.isFocused !== fromProps.isFocused) {
+      if (toProps.isFocused === true) {
+        this.leafletElement.openPopup()
       }
     }
   }

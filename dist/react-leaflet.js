@@ -5999,6 +5999,11 @@ var Marker$1 = function (_MapLayer) {
         this.leafletElement.dragging.disable();
       }
     }
+    if (toProps.isFocused !== fromProps.isFocused) {
+      if (toProps.isFocused === true) {
+        this.leafletElement.openPopup();
+      }
+    }
   };
 
   return Marker$$1;
@@ -6007,6 +6012,7 @@ var Marker$1 = function (_MapLayer) {
 Marker$1.propTypes = {
   children: children,
   draggable: propTypes.bool,
+  isFocused: propTypes.bool, //sami
   icon: propTypes.instanceOf(leaflet.Icon),
   opacity: propTypes.number,
   position: latlng.isRequired,

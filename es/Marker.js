@@ -53,6 +53,11 @@ var Marker = function (_MapLayer) {
         this.leafletElement.dragging.disable();
       }
     }
+    if (toProps.isFocused !== fromProps.isFocused) {
+      if (toProps.isFocused === true) {
+        this.leafletElement.openPopup();
+      }
+    }
   };
 
   return Marker;
@@ -61,6 +66,7 @@ var Marker = function (_MapLayer) {
 Marker.propTypes = {
   children: children,
   draggable: PropTypes.bool,
+  isFocused: PropTypes.bool, //sami
   icon: PropTypes.instanceOf(Icon),
   opacity: PropTypes.number,
   position: latlng.isRequired,
