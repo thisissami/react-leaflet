@@ -6000,8 +6000,10 @@ var Marker$1 = function (_MapLayer) {
       }
     }
     if (toProps.isFocused !== fromProps.isFocused) {
+      console.log('IS FOCUSED DIFFERENT');
       if (toProps.isFocused === true) {
-        this.leafletElement.openPopup();
+        console.log('WE IS HERE');
+        setTimeout(this.leafletElement.openPopup, 1);
       }
     }
   };
