@@ -69,7 +69,10 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
       console.log('IS FOCUSED DIFFERENT')
       if (toProps.isFocused === true) {
         console.log('WE IS HERE')
-        this.leafletElement.openPopup()
+        setTimeout(() => {
+          console.log('in timeout')
+          this.leafletElement.openPopup()
+        }, 5)
       }
     }
   }

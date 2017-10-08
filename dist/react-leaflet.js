@@ -5980,6 +5980,8 @@ var Marker$1 = function (_MapLayer) {
   };
 
   Marker$$1.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+    var _this2 = this;
+
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position);
     }
@@ -6004,7 +6006,10 @@ var Marker$1 = function (_MapLayer) {
       console.log('IS FOCUSED DIFFERENT');
       if (toProps.isFocused === true) {
         console.log('WE IS HERE');
-        this.leafletElement.openPopup();
+        setTimeout(function () {
+          console.log('in timeout');
+          _this2.leafletElement.openPopup();
+        }, 5);
       }
     }
   };
