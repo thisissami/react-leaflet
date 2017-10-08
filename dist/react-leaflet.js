@@ -5999,11 +5999,12 @@ var Marker$1 = function (_MapLayer) {
         this.leafletElement.dragging.disable();
       }
     }
+    console.log('poop');
     if (toProps.isFocused !== fromProps.isFocused) {
       console.log('IS FOCUSED DIFFERENT');
       if (toProps.isFocused === true) {
         console.log('WE IS HERE');
-        setTimeout(this.leafletElement.openPopup, 1);
+        this.leafletElement.openPopup();
       }
     }
   };
