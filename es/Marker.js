@@ -55,13 +55,10 @@ var Marker = function (_MapLayer) {
         this.leafletElement.dragging.disable();
       }
     }
-    console.log('poop');
+    //sami
     if (toProps.isFocused !== fromProps.isFocused) {
-      console.log('IS FOCUSED DIFFERENT');
       if (toProps.isFocused === true) {
-        console.log('WE IS HERE');
         setTimeout(function () {
-          console.log('in timeout');
           _this2.leafletElement.openPopup();
         }, 5);
       }

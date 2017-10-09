@@ -64,13 +64,10 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
         this.leafletElement.dragging.disable()
       }
     }
-    console.log('poop')
+    //sami
     if (toProps.isFocused !== fromProps.isFocused) {
-      console.log('IS FOCUSED DIFFERENT')
       if (toProps.isFocused === true) {
-        console.log('WE IS HERE')
         setTimeout(() => {
-          console.log('in timeout')
           this.leafletElement.openPopup()
         }, 5)
       }
