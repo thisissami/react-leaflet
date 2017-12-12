@@ -52,16 +52,6 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
     }
-    //sami
-    if (toProps.isFocused !== fromProps.isFocused) {
-      if (toProps.isFocused === true) {
-        setTimeout(() => {
-          window.le = this.leafletElement
-          console.log('inside popup timeout', this.leafletElement._contentNode.firstElementChild)
-          this.leafletElement._contentNode.firstElementChild.firstElementChild.focus()
-        }, 5)
-      }
-    }
   }
 
   componentWillMount() {
@@ -90,13 +80,6 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
       }
       el.openOn(map)
     }
-    //sami
-    if (this.props.isFocused) {
-      setTimeout(() => {
-        console.log('inside didMount', el)
-        el._contentNode.firstElementChild.firstElementChild.focus()
-      }, 5)
-    }
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -104,15 +87,6 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
 
     if (this.leafletElement.isOpen()) {
       this.renderPopupContent()
-    }
-
-    //sami
-    if (this.props.isFocused) {
-      const el = this.leafletElement
-      setTimeout(() => {
-        console.log('inside didUpdate', el)
-        el._contentNode.firstElementChild.firstElementChild.focus()
-      }, 5)
     }
   }
 
@@ -139,7 +113,6 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
       if (this.props.isFocused) {
         const el = this.leafletElement
         setTimeout(() => {
-          console.log('inside onPopupOpen', el)
           el._contentNode.firstElementChild.firstElementChild.focus()
         }, 5)
       }

@@ -6354,7 +6354,6 @@ var Popup$1 = function (_MapComponent) {
         if (_this.props.isFocused) {
           var el = _this.leafletElement;
           setTimeout(function () {
-            console.log('inside onPopupOpen', el);
             el._contentNode.firstElementChild.firstElementChild.focus();
           }, 5);
         }
@@ -6399,20 +6398,8 @@ var Popup$1 = function (_MapComponent) {
   };
 
   Popup$$1.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
-    var _this2 = this;
-
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position);
-    }
-    //sami
-    if (toProps.isFocused !== fromProps.isFocused) {
-      if (toProps.isFocused === true) {
-        setTimeout(function () {
-          window.le = _this2.leafletElement;
-          console.log('inside popup timeout', _this2.leafletElement._contentNode.firstElementChild);
-          _this2.leafletElement._contentNode.firstElementChild.firstElementChild.focus();
-        }, 5);
-      }
     }
   };
 
@@ -6445,13 +6432,6 @@ var Popup$1 = function (_MapComponent) {
       }
       el.openOn(map$$1);
     }
-    //sami
-    if (this.props.isFocused) {
-      setTimeout(function () {
-        console.log('inside didMount', el);
-        el._contentNode.firstElementChild.firstElementChild.focus();
-      }, 5);
-    }
   };
 
   Popup$$1.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -6459,15 +6439,6 @@ var Popup$1 = function (_MapComponent) {
 
     if (this.leafletElement.isOpen()) {
       this.renderPopupContent();
-    }
-
-    //sami
-    if (this.props.isFocused) {
-      var el = this.leafletElement;
-      setTimeout(function () {
-        console.log('inside didUpdate', el);
-        el._contentNode.firstElementChild.firstElementChild.focus();
-      }, 5);
     }
   };
 
