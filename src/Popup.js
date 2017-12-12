@@ -56,8 +56,9 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
     if (toProps.isFocused !== fromProps.isFocused) {
       if (toProps.isFocused === true) {
         setTimeout(() => {
+          window.le = this.leafletElement
           console.log('inside popup timeout', this.leafletElement._contentNode.firstElementChild)
-          this.leafletElement._contentNode.firstElementChild.firstElementChild.focus()
+          this.leafletElement.firstElementChild.firstElementChild.focus()
         }, 5)
       }
     }

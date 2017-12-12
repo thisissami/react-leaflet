@@ -6399,8 +6399,9 @@ var Popup$1 = function (_MapComponent) {
     if (toProps.isFocused !== fromProps.isFocused) {
       if (toProps.isFocused === true) {
         setTimeout(function () {
+          window.le = _this2.leafletElement;
           console.log('inside popup timeout', _this2.leafletElement._contentNode.firstElementChild);
-          _this2.leafletElement._contentNode.firstElementChild.firstElementChild.focus();
+          _this2.leafletElement.firstElementChild.firstElementChild.focus();
         }, 5);
       }
     }
