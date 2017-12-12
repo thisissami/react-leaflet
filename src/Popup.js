@@ -15,6 +15,7 @@ type LeafletElement = LeafletPopup
 type Props = {
   autoPan?: boolean,
   children: Element<any>,
+  isFocused?: boolean, //sami
   onClose?: () => void,
   onOpen?: () => void,
   pane?: string,
@@ -24,6 +25,7 @@ type Props = {
 export default class Popup extends MapComponent<LeafletElement, Props> {
   static propTypes = {
     children: PropTypes.node,
+    isFocused: PropTypes.bool, //sami
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
     position: latlng,
@@ -49,6 +51,15 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
   updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
+    }
+    //sami
+    if (toProps.isFocused !== fromProps.isFocused) {
+      if (toProps.isFocused === true) {
+        setTimeout(() => {
+          console.log('inside popup timeout', this.leafletElement)
+          this.leafletElement.focus()
+        }, 5)
+      }
     }
   }
 

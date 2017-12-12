@@ -79,8 +79,19 @@ var Popup = function (_MapComponent) {
   };
 
   Popup.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+    var _this2 = this;
+
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position);
+    }
+    //sami
+    if (toProps.isFocused !== fromProps.isFocused) {
+      if (toProps.isFocused === true) {
+        setTimeout(function () {
+          console.log('inside popup timeout', _this2.leafletElement);
+          _this2.leafletElement.focus();
+        }, 5);
+      }
     }
   };
 
@@ -144,6 +155,7 @@ var Popup = function (_MapComponent) {
 
 Popup.propTypes = {
   children: PropTypes.node,
+  isFocused: PropTypes.bool, //sami
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   position: latlng
