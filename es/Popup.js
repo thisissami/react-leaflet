@@ -88,8 +88,8 @@ var Popup = function (_MapComponent) {
     if (toProps.isFocused !== fromProps.isFocused) {
       if (toProps.isFocused === true) {
         setTimeout(function () {
-          console.log('inside popup timeout', _this2.leafletElement);
-          _this2.leafletElement.focus();
+          console.log('inside popup timeout', _this2.leafletElement._contentNode.firstElementChild);
+          _this2.leafletElement._contentNode.firstElementChild.firstElementChild.focus();
         }, 5);
       }
     }
